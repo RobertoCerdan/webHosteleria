@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/carrito/store/', [App\Http\Controllers\CarritoController::class, 'store'])->name('carrito.store');
+
+
+Route::get('/form', function(){
+    return view('producto.create');
+});
+
