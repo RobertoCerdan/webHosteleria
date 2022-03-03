@@ -1,50 +1,37 @@
-<form class="row justify-content-center" action="" method="post">
-                
-                <div  class="col-10 ">
-                    <label class="position-relative">
-                        <input type="text" name="" id="nombreCliente" placeholder=" ">
-                        <span class="p-2 ">Nombre</span>
-                    </label>
-                    <label class="position-relative">
-                        <input type="text" name="" id="apellidoCliente" placeholder=" ">
-                        <span class="p-2">Apellido</span>
-                    </label>
-                    <label class="position-relative">
-                        <input type="text" name="" id="emailCliente" placeholder=" ">
-                        <span class="p-2">Email</span>
-                    </label>
-                </div>    
-                <div class="col-10">
-                    <label class="position-relative">
-                        <input type="text" name="" id="username" placeholder=" ">
-                        <span class="p-2">Nombre de usuario</span>
-                    </label>
-                    <label class="position-relative">
-                        <input type="text" name="" id="contrasena1" placeholder=" ">
-                        <span class="p-2">Contraseña</span>
-                    </label>
-                    <label class="position-relative">
-                        <input type="text" name="" id="contrasena2" placeholder=" ">
-                        <span class="p-2">Repetir contraseña</span>
-                    </label>
-                
-                </div>
+@extends('layouts.app')
 
-                <div class="col-10  mb-3">
-                        <div class="col-12 col-sm-6 col-md-5 col-lg-4 mb-3"> 
-                            <p class="fs-5">Tipo de usuario</p>
-                            <select name="" id="">
-                                <!-- 
-                                    foreach()
-                                        <option value=""></option>
-                                    endforeach
-                                -->
-                            </select>
-                        </div>
+@section('content')
 
-                </div>
-                <div class="col-10 ">
-                    <input class="btn border mb-3" type="submit" value="Añadir">
-                </div>
+<form class="row justify-content-center" action="{{ route('producto.store') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">      
+    @csrf         
+    <h2 class="border-bottom border-secondary text-center col-md-5 col-xl-3 mb-3">Subir nuevo producto</h2>
+    <div class="w-100"></div>
+    <div class="form-floating col-md-5 col-xl-3 mb-2">
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder=" ">
+        <label for="nombre">Nombre producto</label>
+    </div>
+    <div class="form-floating col-md-5 col-xl-3 mb-2">
+        <input type="number" class="form-control" id="precio" name="precio" placeholder=" " min="0">
+        <label for="precio">Precio</label>
+    </div>   
+    <div class="form-floating col-md-10 col-xl-6 m-2" style="height: 100px;">
+        <textarea class="form-control h-100" placeholder="Descripción del plato" id="descripcion" name="descripcion"></textarea>
+        <label for="descripcion">Descripci&oacute;n</label>
+    </div>  
+    <div class="col-md-10 col-xl-6 mb-3 ">
+        <label for="img" class="form-label">Foto del plato</label>
+        <input class="form-control" type="file" id="img" name="imagen">
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-10 col-xl-6 mb-3 ">
+        <label for="categoria" class="form-label">Categorias</label>
+        <input class="form-control" list="categoriasOptions" id="categoria" name="categoria" placeholder="Buscar categoria...">
+        <datalist id="categoriasOptions">
+            //opciones
+        </datalist>
+    </div>
+    <div class="w-100"></div>
+    <button type="submit" class="btn btn-primary col-4 col-xl-3">Añadir</button>
 
-            </form>
+</form>
+@endsection
