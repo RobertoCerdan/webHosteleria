@@ -29,8 +29,8 @@
   </div>
     <div class="row justify-content-center">
         <h1 class="text-center mb-5">{{ $producto->titulo }}</h1>
-        <div class="col-lg-6 mb-3">
-            <img class="img-fluid img-thumbnail" src="https://picsum.photos/750/500">
+        <div class="col-lg-6 mb-3 d-flex justify-content-center">
+          <img class="img-fluid img-thumbnail" src="{{ asset('/storage/imagenes/' . $producto->imagen) }}">
         </div>
         <form  class="col-lg-5" action="{{ route('producto.update', $producto->id)}}" method="POST" enctype="multipart/form-data">
         @csrf    
@@ -40,7 +40,7 @@
             </div>
             <div class="mb-3">
               <label for="precio" class="form-label">Precio</label>
-              <input type="number" class="form-control" id="precio" name="precio" min="0" placeholder="{{ $producto->precio }}" value="{{ $producto->precio }}">
+              <input type="number" class="form-control" id="precio" name="precio" min="0" step="0.01" placeholder="{{ $producto->precio }}" value="{{ $producto->precio }}">
             </div>
             <div class="mb-3">
               <label for="descripcion" class="form-label">Descripci&oacute;n</label>
