@@ -39,12 +39,12 @@ Route::get('/prueba/{archivo}', function ($archivo) {
 
 
 //Almacenar las fotos
-Route::post('/img/store', [App\Http\Controllers\StorageController::class, 'store'])->name('manuales.store');
+Route::post('/img/store', [App\Http\Controllers\StorageController::class, 'store'])->name('imagenes.store');
 Route::get('/img/{archivo}', function ($archivo) {
     $public_path = public_path();
-    $url = $public_path.'/storage/manuales/'.$archivo;
+    $url = $public_path.'/storage/imagenes/'.$archivo;
     //verificamos si el archivo existe y lo retornamos
-    if (Storage::exists('/manuales/'.$archivo))
+    if (Storage::exists('/imagenes/'.$archivo))
     {
       return response()->download($url);
     }else{
