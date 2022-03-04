@@ -37,11 +37,13 @@ class CarritoController extends Controller
      */
     static public function store(Request $request)
     {
+        if (Auth::check()) {
+            $userId=Auth::user()->id;
+        }
         
-        $userId=Auth::user()->id;
         
         
-        $productoId=request('productoId');
+        $productoId=request('id');
         $producto=Producto::find($productoId);
         
         //$cantidad=request('cantidad');
@@ -49,29 +51,42 @@ class CarritoController extends Controller
         
 
         Cart::add($producto->id, $producto->nombre, 1, $producto->precio);
-        Cart::store($userId);
-        return Cart::content();
+        if (Auth::check()) {
+            Cart::store($userId);
+        }
+        else{
+            Cart::store();
+        }
+        $itemsCesta = Cart::content()->toArray();
+        foreach ($itemsCesta as $clave => $valor){
+            $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+        }
+        return $itemsCesta;
+
 
     }
 
     static public function restore()
     {
         
-        $userId=Auth::user()->id;
-        
-        Cart::restore($userId);
-        return Cart::content();
+        if (Auth::check()) {
+            $userId=Auth::user()->id;
+        }
+        if (Auth::check()) {
+            Cart::restore($userId);
+        }
+        else{
+            Cart::restore();
+        }
+        $itemsCesta = Cart::content()->toArray();
+        foreach ($itemsCesta as $clave => $valor){
+            $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+        }
+        return $itemsCesta;
     }
 
 
-    static public function getCart()
-    {
-        
-        $userId=Auth::user()->id;
-        
-        Cart::restore($userId);
-        return json_encode(Cart::content());
-    }
+  
 
     /**
      * Display the specified resource.
