@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Cart;
+use App\Models\Producto;
 
 class CarritoController extends Controller
 {
@@ -40,13 +41,14 @@ class CarritoController extends Controller
         $userId=Auth::user()->id;
         
         
-        $nombre=request('nombre');
         $productoId=request('productoId');
-        $cantidad=request('cantidad');
-        $precio=request('precio');
+        $producto=Producto::find($productoId);
+        
+        //$cantidad=request('cantidad');
+        //precio=request('precio');
         
 
-        Cart::add($productoId, $nombre, $cantidad, $precio);
+        Cart::add($producto->id, $producto->nombre, 1, $producto->precio);
         Cart::store($userId);
         return Cart::content();
 
@@ -59,6 +61,16 @@ class CarritoController extends Controller
         
         Cart::restore($userId);
         return Cart::content();
+    }
+
+
+    static public function getCart()
+    {
+        
+        $userId=Auth::user()->id;
+        
+        Cart::restore($userId);
+        return json_encode(Cart::content());
     }
 
     /**

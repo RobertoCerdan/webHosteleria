@@ -16,7 +16,9 @@ class ProductoController extends Controller
     public function index()
     {
         $productos=Producto::all();
-        return view('producto.index', $productos);
+        return view('producto.index', [
+            'productos' => $productos
+        ]);
     }
 
     /**
