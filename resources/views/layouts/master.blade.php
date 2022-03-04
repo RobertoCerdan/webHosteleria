@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <title>Document</title>
 </head>
@@ -25,7 +24,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownPerfil">
                     <li class="dropdown-item active">{{Auth::user()->name}}</li>
                     <li><a class="dropdown-item" href="#">Ver perfil</a></li>
-                    <li><a class="dropdown-item" href="#">Añadir Producto</a></li>
+                    <li><a class="dropdown-item" href="{{route('producto.create')}}">Añadir Producto</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item text-danger" href="{{ route('logout') }}">Cerrar Session</a></li>
                 </ul>

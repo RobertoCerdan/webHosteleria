@@ -1,7 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('contenedor')
 
+<div class="col-12 pt-5">
 <form class="row justify-content-center" action="{{ route('producto.store') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">      
     @csrf         
     <h2 class="border-bottom border-secondary text-center col-md-5 col-xl-3 mb-3">Subir nuevo producto</h2>
@@ -34,4 +35,5 @@
     <button type="submit" class="btn btn-primary col-4 col-xl-3">Añadir</button>
 
 </form>
+</div>
 @endsection

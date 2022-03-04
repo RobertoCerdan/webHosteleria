@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('contenedor')
 
 <div class="container shadow min-vh-100 py-2">
   <div class="row justify-content-end">
@@ -29,8 +29,8 @@
   </div>
     <div class="row justify-content-center">
         <h1 class="text-center mb-5">{{ $producto->nombre }}</h1>
-        <div class="col-lg-6 mb-3">
-            <img class="img-fluid img-thumbnail" src="https://picsum.photos/750/500">
+        <div class="col-lg-6 mb-3 d-flex justify-content-center">
+            <img class="img-fluid img-thumbnail" src="{{ asset('/storage/imagenes/' . $producto->imagen) }}">
         </div>
         <form  class="col-lg-5" action="{{ route('producto.update', $producto->id)}}" method="POST">
             <div class="mb-3">
