@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'login']);
+Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
 
 Auth::routes();
 
