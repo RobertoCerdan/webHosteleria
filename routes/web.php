@@ -26,8 +26,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/carrito/store/', [App\Http\Controllers\CarritoController::class, 'store'])->name('carrito.store');
+//----Carrito
+Route::post('/carrito/store/{id}', [App\Http\Controllers\CarritoController::class, 'store'])->name('carrito.store');
+Route::getr('/carrito/get', [App\Http\Controllers\CarritoController::class, 'get'])->name('carrito.get');
 
+
+//----Producto
 Route::get('/producto', [App\Http\Controllers\ProductoController::class, 'index'])->name('producto.index');
 Route::get('/producto/create', [App\Http\Controllers\ProductoController::class, 'create'])->name('producto.create');
 Route::post('/producto/store', [App\Http\Controllers\ProductoController::class, 'store'])->name('producto.store');
@@ -45,15 +49,4 @@ Route::get('/prueba/{archivo}', function ($archivo) {
 
 //Almacenar las fotos
 Route::post('/img/store', [App\Http\Controllers\StorageController::class, 'store'])->name('imagenes.store');
-Route::get('/img/{archivo}', function ($archivo) {
-    $public_path = public_path();
-    $url = $public_path.'/storage/imagenes/'.$archivo;
-    //verificamos si el archivo existe y lo retornamos
-    if (Storage::exists('/imagenes/'.$archivo))
-    {
-      return response()->download($url);
-    }else{
-        //si no se encuentra lanzamos un error 404.
-        abort(404);
-    }
-});
+
