@@ -3,12 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\CarritoController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use App\Models\User;
-
 
 class LoginController extends Controller
 {
@@ -41,10 +37,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    protected function authenticated(Request $request, User $user) {  //se ejecutan acciones despues de haberse logeado
-        
-        CarritoController::restore(); //incializa el carrito con los elementos del usuario autenticado si esque hay algo
-        return redirect()->intended($this->redirectPath());
-     }
 }

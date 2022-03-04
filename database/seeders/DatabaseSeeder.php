@@ -20,10 +20,10 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         DB::table('users')->insert([
-            'name'=>'Julen',
-            'email' => 'julen@gmail.com',
-            'telefono'
-            'password' =>Hash::make('adminadmin'),
+            'name'=>'Sergio',
+            'email' => 'sergio@gmail.com',
+            'telefono' => '777546342',
+            'password' =>Hash::make('12345Abcde'),
             'created_at'=>  Carbon::now()/*->format('Y-m-d H:i:s')*/,
             'updated_at'=>  Carbon::now()/*->format('Y-m-d H:i:s')*/,
             'rol'=> 'Admin',
