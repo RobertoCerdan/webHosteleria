@@ -28,7 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //----Carrito
 Route::post('/carrito/store/{id}', [App\Http\Controllers\CarritoController::class, 'store'])->name('carrito.store');
-Route::getr('/carrito/get', [App\Http\Controllers\CarritoController::class, 'get'])->name('carrito.get');
+Route::get('/carrito/get', [App\Http\Controllers\CarritoController::class, 'get'])->name('carrito.get');
 
 
 //----Producto

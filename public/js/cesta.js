@@ -1,8 +1,13 @@
-$('.aCesta').on('click', 'anadirACesta');
-alert('hola');
+$('.aCesta').on('click', anadirACesta);
+$('.aCesta').on('click', recuperarCesta);
+$("#cart").on("click", toggle);
 
 
-
+ 
+function toggle(){
+   $(".shopping-cart").fadeToggle( "fast");
+}
+ 
 function anadirACesta(){
     url="/carrito/anadir/" + this.id;
 
@@ -28,7 +33,7 @@ function anadirACesta(){
     });
 }
 
-function get(){
+function recuperarCesta(){
     url="/carrito/get";
 
     $.ajax({
