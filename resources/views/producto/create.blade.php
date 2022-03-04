@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('contenedor')
 
 <form class="row justify-content-center" action="{{ route('producto.store') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">      
     @csrf         

@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('contenedor')
 
 <div class="container shadow min-vh-100 py-2">
   <div class="row justify-content-end">
