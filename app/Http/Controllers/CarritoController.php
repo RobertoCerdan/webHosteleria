@@ -50,7 +50,7 @@ class CarritoController extends Controller
         //precio=request('precio');
         
 
-        Cart::add($producto->id, $producto->nombre, 1, $producto->precio);
+        Cart::add($producto->id, $producto->nombre, 1, $producto->precio)->associate('Producto');
         if (Auth::check()) {
             Cart::store($userId);
         }
@@ -94,9 +94,15 @@ class CarritoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $itemsCesta = Cart::content()->toArray();
+        foreach ($itemsCesta as $clave => $valor){
+            $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+        }
+        return view('carrito.confirmacion', [
+            'productos' => $itemsCesta
+        ]);
     }
 
     /**
@@ -128,8 +134,20 @@ class CarritoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function clear()
+    {
+        Cart::destroy();
+        if (Auth::check()) {
+            Cart::store(Auth::user()->id);
+        }
+        else{
+            Cart::store();
+        }
+
+    }
+
     public function destroy($id)
     {
-        //
+        Cart::destroy();
     }
 }

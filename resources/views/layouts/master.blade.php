@@ -9,6 +9,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/cesta.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <title>Document</title>
+    @yield('head')
 </head>
 <body>
     <div class="container-fluid main">
@@ -48,27 +49,11 @@
             </div> <!--end shopping-cart-header -->
 
             <ul class="shopping-cart-items">
-            <li class="clearfix row align-items-center">
-                <div class="col-4">
-                    <img class="img-fluid" src="http://web.test/storage/imagenes/default.jpeg" alt="item1" />
-                </div>
-                <div class="col-8">
-                    <span class="item-name">Sony DSC-RX100M III</span>
-                    <span class="item-price">$849.99</span>
-                    <span class="item-quantity">Quantity: 01</span>
-                </div>
-            </li>
-            <li class="clearfix">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
-                <span class="item-name">Sony DSC-RX100M III</span>
-                <span class="item-price">$849.99</span>
-                <span class="item-quantity">Quantity: 01</span>
-            </li>
             
-
+                <!--items carrito -->
             </ul>
 
-            <a href="#" class="button">Checkout</a>
+            <a href="{{ route('carrito.show') }}" class="button">Checkout</a>
         </div> 
         
 
