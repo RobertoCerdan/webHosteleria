@@ -21,15 +21,18 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
 
 
-Route::get('/producto', [App\Http\Controllers\ProductoController::class, 'index'])->name('producto.index');
-Route::get('/producto/create', [App\Http\Controllers\ProductoController::class, 'create'])->name('producto.create');
-Route::post('/producto/store', [App\Http\Controllers\ProductoController::class, 'store'])->name('producto.store');
-Route::get('/producto/edit/{id}', [App\Http\Controllers\ProductoController::class, 'edit'])->name('producto.edit');
-Route::post('/producto/update/{id}', [App\Http\Controllers\ProductoController::class, 'update'])->name('producto.update');
-Route::get('/producto/show/{id}', [App\Http\Controllers\ProductoController::class, 'show'])->name('producto.show');
-Route::get('/producto/destroy/{id}', [App\Http\Controllers\ProductoController::class, 'destroy'])->name('producto.destroy');
+Route::get('/producto', [App\Http\Controllers\ProductoController::class, 'index'])->name('producto.index')->middleware('auth');
+Route::get('/producto/create', [App\Http\Controllers\ProductoController::class, 'create'])->name('producto.create')->middleware('auth');
+Route::post('/producto/store', [App\Http\Controllers\ProductoController::class, 'store'])->name('producto.store')->middleware('auth');
+Route::get('/producto/edit/{id}', [App\Http\Controllers\ProductoController::class, 'edit'])->name('producto.edit')->middleware('auth');
+Route::post('/producto/update/{id}', [App\Http\Controllers\ProductoController::class, 'update'])->name('producto.update')->middleware('auth');
+Route::get('/producto/show/{id}', [App\Http\Controllers\ProductoController::class, 'show'])->name('producto.show')->middleware('auth');
+Route::get('/producto/destroy/{id}', [App\Http\Controllers\ProductoController::class, 'destroy'])->name('producto.destroy')->middleware('auth');
+Route::get('/perfil/show', [App\Http\Controllers\PerfilController::class, 'show'])->name('perfil.show')->middleware('auth');
+Route::get('/perfil/edit/{id}', [App\Http\Controllers\PerfilController::class, 'edit'])->name('perfil.edit')->middleware('auth');
+Route::post('/perfil/update/{id}', [App\Http\Controllers\PerfilController::class, 'update'])->name('perfil.update')->middleware('auth');
 
-Route::post('/img/store', [App\Http\Controllers\StorageController::class, 'store'])->name('imagenes.store');
+Route::post('/img/store', [App\Http\Controllers\StorageController::class, 'store'])->name('imagenes.store')->middleware('auth');
 Route::get('/img/{archivo}', function ($archivo) {
     $public_path = public_path();
     $url = $public_path.'/storage/imagenes/'.$archivo;
@@ -41,4 +44,4 @@ Route::get('/img/{archivo}', function ($archivo) {
         //si no se encuentra lanzamos un error 404.
         abort(404);
     }
-});
+})->middleware('auth');

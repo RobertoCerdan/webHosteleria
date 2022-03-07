@@ -3,26 +3,9 @@
 @section('contenedor')
 
 <div class="container shadow min-vh-100 py-2">
-  <div class="row justify-content-end">
-    @if(Auth::guest())
-    @else
-      @if(Auth::user()->rol == 'Admin')
-        
-          <div class="mb-1 mt-1" style="width: 3em;">
-            <a href="{{route('producto.edit', $producto->id)}}">
-              <img class="img-fluid" src="{{ asset('iconos/editar.png') }}">
-            </a>
-          </div>     
-          
-          <div class="mb-1 mt-1" style="width: 3em;">
-            <a href="{{route('producto.destroy', $producto->id)}}">
-              <img class="img-fluid" src="{{ asset('iconos/borrar.png') }}">
-            </a>
-          </div>    
-      @endif
-    @endif
+  <div class="row justify-content-end pt-4">
       <div class="mb-1 mt-1" style="width: 3em;">
-        <a href="{{route('producto.index')}}">
+        <a href="{{route('producto.show', $producto->id)}}">
           <img class="img-fluid" src="{{ asset('iconos/volver.png') }}">
         </a>
       </div>  

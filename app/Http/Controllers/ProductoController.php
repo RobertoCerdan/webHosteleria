@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StorageController;
 
@@ -15,8 +16,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos=Producto::all();
-        return view('producto.index', ['productos' => $productos]);
+        $productos= Producto::paginate(10);
+        return view('producto.index', compact('productos'));
     }
 
     /**
@@ -55,7 +56,7 @@ class ProductoController extends Controller
         $producto->imagen=$nombreArchivo;
         $producto->save();
 
-        return redirect()->route('producto.create');
+        return redirect()->route('producto.index');
     }
 
     /**
@@ -103,19 +104,19 @@ class ProductoController extends Controller
         $categoria=request('categoria');
 
         $archivo=$request->file('imagen');
-        $nombreArchivo=$archivo->getClientOriginalName();
         if(request('imagen')!=null){
+            $nombreArchivo=$archivo->getClientOriginalName();
             StorageController::destroy($producto->imagen);
             StorageController::save($archivo, $nombreArchivo);
+            $producto->imagen=$nombreArchivo;
         }
         $producto->nombre=$nombreProducto;
         $producto->precio=$precio;
         $producto->descripcion=$descripcion;
         $producto->categoria=$categoria;
-        $producto->imagen=$nombreArchivo;
         $producto->save();
 
-        return redirect()->route('producto.edit', $producto->id);
+        return redirect()->route('producto.show', $producto->id);
     }
 
     /**
