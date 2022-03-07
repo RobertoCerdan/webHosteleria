@@ -196,13 +196,13 @@ input:focus::-webkit-input-placeholder {
 }
 
 .btn {
-  background-color: #000;
-  border-color: #000;
-  color: white;
+  background-color: #000 !important;
+  border-color: #000 !important;
+  color: white !important;
   width: 100%;
-  font-size: 0.7rem;
-  margin-top: 4vh;
-  padding: 1vh;
+  font-size: 0.7rem !important;
+  margin-top: 4vh !important;
+  padding: 1vh !important;
   border-radius: 0;
 }
 
@@ -306,7 +306,7 @@ a:hover {
   color: #ABB0BE;
 }
 
-.shopping-cart:after {
+.shopping-cart::after {
   bottom: 100%;
   left: 89%;
   border: solid transparent;

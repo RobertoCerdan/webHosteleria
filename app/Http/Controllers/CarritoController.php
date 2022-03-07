@@ -28,13 +28,24 @@ class CarritoController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    static public function removeAll(Request $request){
+        $id=request('id');
+        $itemsCesta = Cart::content()->toArray();
+        foreach ($itemsCesta as $clave => $valor){
+            if($itemsCesta[$clave]['id']==$id){
+                Cart::remove($clave);
+            }
+        }
+        return redirect()->route('carrito.show');
+    }
+
     static public function store(Request $request)
     {
         if (Auth::check()) {
@@ -62,8 +73,6 @@ class CarritoController extends Controller
             $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
         }
         return $itemsCesta;
-
-
     }
 
     static public function restore()
@@ -125,7 +134,15 @@ class CarritoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $id=request('id');
+        $cantidad=request('cantidad');
+        $itemsCesta = Cart::content()->toArray();
+        foreach ($itemsCesta as $clave => $valor){
+            if($itemsCesta[$clave]['id']==$id){
+                Cart::update($clave, $cantidad);
+            }
+        }
+        return redirect()->route('carrito.show');
     }
 
     /**

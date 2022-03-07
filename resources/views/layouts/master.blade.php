@@ -39,7 +39,7 @@
             </div>
         </nav>
         </header>
-        <div class="shopping-cart">
+        <div class="shopping-cart" style="display: none;">
             <div class="shopping-cart-header">
             <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{{ Cart::count(); }}</span>
             <div class="shopping-cart-total">

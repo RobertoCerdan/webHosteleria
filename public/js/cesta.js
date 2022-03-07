@@ -8,15 +8,15 @@ function toggle(){
    $(".shopping-cart").fadeToggle( "fast");
 }
  
-function anadirACesta(){
-    url="/carrito/store/" + this.id;
+function actualizarCantidad(){
+    cantidad = $('.cantidad-producto').val();
+    url="/carrito/update/" + this.id + "?cantidad=" + cantidad;
 
     alert(url);
     $.ajax({
         url : url,
         type : 'GET',
         success : function(json) {
-            alert('Objeto añadido');
             incluirElementosCesta(json);
         },
     
@@ -26,11 +26,27 @@ function anadirACesta(){
         error : function(xhr, status) {
             alert('Disculpe, existió un problema');
         },
+    });
+}
+
+
+function anadirACesta(){
+    url="/carrito/store/" + this.id;
+
+    alert(url);
+    $.ajax({
+        url : url,
+        type : 'GET',
+        success : function(json) {
+            incluirElementosCesta(json);
+        },
     
-        // código a ejecutar sin importar si la petición falló o no
-        complete : function(xhr, status) {
-            alert('Petición realizada');
-        }
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error : function(xhr, status) {
+            alert('Disculpe, existió un problema');
+        },
     });
 }
 
@@ -41,7 +57,6 @@ function recuperarCesta(){
         url : url,
         type : 'GET',
         success : function(json) {
-            console.log(json);
             incluirElementosCesta(json);
         },
     

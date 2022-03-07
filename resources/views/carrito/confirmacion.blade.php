@@ -5,7 +5,6 @@
 <style>
     body {
         background: #ddd;
-        min-height: 100vh;
         vertical-align: middle;
         display: flex;
         font-family: sans-serif;
@@ -35,8 +34,8 @@
                         <div class="row text-muted">{{ $producto['name'] }}</div>
                         <div class="row">Cotton T-shirt</div>
                     </div>
-                    <div class="col"> <a href="#">-</a><a href="#" class="border">{{ $producto['qty'] }}</a><a href="#">+</a> </div>
-                    <div class="col">&euro; {{ $producto['price'] }}<span class="close text-right">&#10005;</span></div>
+                    <div class="col"> <input style="max-width: 5em;" type="number" id="{{$producto['id']}}"class="cantidad-producto form-control" placeholder="{{$producto['qty']}}" min="1" max="99"> </div>
+                    <div class="col">{{ $producto['price'] }}&euro;</div><div class="col"><span class="close text-right"><a href="{{route('carrito.removeAll', $producto['id'])}}" >&#10005;</a></span></div>
                 </div>
             </div>
             @endforeach
