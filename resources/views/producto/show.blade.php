@@ -14,8 +14,8 @@
           </a>
         </div>     
         
-        <div class="mb-1 mt-1" style="width: 3em;">
-          <a href="{{route('producto.destroy', $producto->id)}}">
+        <div class="mb-1 mt-1" style="width: 3em;"> 
+          <a data-bs-toggle="modal" data-bs-target="#modalBorrar{{$producto->id}}">
             <img class="img-fluid" src="{{ asset('iconos/borrar.png') }}">
           </a>
         </div>    
@@ -47,6 +47,20 @@
             </div>
         </form>
         
+    </div>
+    <div class="modal fade" id="modalBorrar{{$producto->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalBorrarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>    
+                <div class="modal-body text-center">
+                    <p>Estas seguro que quieres borrar este producto?</p>
+                    <button type="button" class="btn btn-secondary me-1" data-bs-dismiss="modal">Cancelar</button>
+                    <a type="button" href="{{route('producto.destroy' , $producto->id)}}" class="btn btn-danger ms-1">Si</a>
+                </div>
+                </div>
+        </div>
     </div>
 </div>
 
