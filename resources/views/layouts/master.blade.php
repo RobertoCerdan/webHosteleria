@@ -33,17 +33,17 @@
                 </div>
                 <a class="nav-link text-dark h4" href="#">Hosteleria Mendizorrotza</a>
                 <div>
-                    <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a>
+                    <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">{{ Cart::count(); }}</span></a>
                 </div>
             </div>
         </nav>
         </header>
         <div class="shopping-cart">
             <div class="shopping-cart-header">
-            <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
+            <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{{ Cart::count(); }}</span>
             <div class="shopping-cart-total">
                 <span class="lighter-text">Total:</span>
-                <span class="main-color-text">$2,229.97</span>
+                <span class="main-color-text">{{ Cart::total(); }}€</span>
             </div>
             </div> <!--end shopping-cart-header -->
 

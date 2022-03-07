@@ -60,7 +60,7 @@ function incluirElementosCesta(productosJSON){
     html="";
     for (const [key, producto] of Object.entries(productos)) {
         console.log(producto);
-        html+="<li class='clearfix row align-items-center'><div class='col-4'><img class='img-fluid' src='storage/imagenes/" + producto['imagen'] + "' alt='" +  producto['name'] +"' /></div><div class='col-8'><span class='item-name'>" + producto['name'] + "</span><span class='item-price'>" + producto['price'] + "€</span><span class='item-quantity'>Cantidad: " + producto['qty'] + "</span></div></li>";
+        html+="<li class='clearfix row align-items-center'><div class='col-4'><img class='img-fluid' src='/storage/imagenes/" + producto['imagen'] + "' alt='" +  producto['name'] +"' /></div><div class='col-8'><span class='item-name'>" + producto['name'] + "</span><span class='item-price'>" + producto['price'] + "€</span><span class='item-quantity'>Cantidad: " + producto['qty'] + "</span></div></li>";
     };
     contenedorElementos.html(html);
 }
