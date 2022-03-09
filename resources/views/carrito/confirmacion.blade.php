@@ -34,7 +34,7 @@
                         <div class="row text-muted">{{ $producto['name'] }}</div>
                         <div class="row">{{ $producto['name'] }}</div>
                     </div>
-                    <div class="col"> <input style="max-width: 5em;" type="number" id="{{$producto['id']}}"class="cantidad-producto form-control" placeholder="{{$producto['qty']}}" min="1" max="99"> </div>
+                    <div class="col"> <input style="max-width: 5em;" type="number" id="{{$producto['id']}}"class="cantidad-producto form-control" placeholder="{{$producto['qty']}}" value="{{$producto['qty']}}" min="1" max="99"> </div>
                     <div class="col">{{ $producto['price'] }}&euro;</div><div class="col"><span class="close text-right"><a href="{{route('carrito.removeAll', $producto['id'])}}" >&#10005;</a></span></div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 <div class="col">PRECIO TOTAL</div>
                 <div class="col text-right">&euro; {{ Cart::total(); }}</div>
             </div>
-            <button class="btn btn-primary w-100">PAGAR</button>
+            <a class="btn btn-primary w-100" href="{{ route('pedido.store') }}">PAGAR</a>
         </div>
     </div>
 </div>

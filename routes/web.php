@@ -25,7 +25,7 @@ Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->n
 Auth::routes();
 
 
-//----Carrito
+//----Carrito------
 Route::get('/carrito/store/{id}', [App\Http\Controllers\CarritoController::class, 'store'])->name('carrito.store');
 Route::get('/carrito/update/{id}', [App\Http\Controllers\CarritoController::class, 'update'])->name('carrito.update');
 Route::get('/carrito/destroy/{id}', [App\Http\Controllers\CarritoController::class, 'destroy'])->name('carrito.destroy');
@@ -34,7 +34,7 @@ Route::get('/carrito/restore', [App\Http\Controllers\CarritoController::class, '
 Route::get('/carrito/show', [App\Http\Controllers\CarritoController::class, 'show'])->name('carrito.show');
 Route::get('/carrito/clear', [App\Http\Controllers\CarritoController::class, 'clear'])->name('carrito.clear');
 
-//----Producto
+//----Producto------
 Route::get('/producto', [App\Http\Controllers\ProductoController::class, 'index'])->name('producto.index');
 Route::get('/producto/create', [App\Http\Controllers\ProductoController::class, 'create'])->name('producto.create');
 Route::post('/producto/store', [App\Http\Controllers\ProductoController::class, 'store'])->name('producto.store');
@@ -42,6 +42,11 @@ Route::get('/producto/edit/{id}', [App\Http\Controllers\ProductoController::clas
 Route::post('/producto/update/{id}', [App\Http\Controllers\ProductoController::class, 'update'])->name('producto.update');
 Route::get('/producto/show/{id}', [App\Http\Controllers\ProductoController::class, 'show'])->name('producto.show');
 Route::get('/producto/destroy/{id}', [App\Http\Controllers\ProductoController::class, 'destroy'])->name('producto.destroy');
+
+
+//-----Pedidos------
+Route::get('/pedido/store', [App\Http\Controllers\PedidoController::class, 'store'])->name('pedido.store');
+Route::get('/pedidos', [App\Http\Controllers\PedidoController::class, 'index'])->name('pedido.index');
 
 
 //--------Prueba

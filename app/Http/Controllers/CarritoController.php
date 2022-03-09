@@ -41,9 +41,17 @@ class CarritoController extends Controller
         foreach ($itemsCesta as $clave => $valor){
             if($itemsCesta[$clave]['id']==$id){
                 Cart::remove($clave);
+                if (Auth::check()) {
+                    Cart::store(Auth::user()->id);
+                }
+                else{
+                    Cart::store();
+                }
+                return redirect()->route('carrito.show');
             }
         }
         return redirect()->route('carrito.show');
+        
     }
 
     static public function store(Request $request)
@@ -158,7 +166,8 @@ class CarritoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function clear()
+
+    static public function destroy()
     {
         Cart::destroy();
         if (Auth::check()) {
@@ -167,11 +176,16 @@ class CarritoController extends Controller
         else{
             Cart::store();
         }
-
     }
 
-    public function destroy($id)
+
+    static public function getItems()
     {
-        Cart::destroy();
+        $itemsCesta = Cart::content()->toArray();
+        foreach ($itemsCesta as $clave => $valor){
+            $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+        }
+        return $itemsCesta;
     }
+    
 }
