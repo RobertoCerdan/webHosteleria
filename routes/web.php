@@ -46,6 +46,7 @@ Route::get('/producto/destroy/{id}', [App\Http\Controllers\ProductoController::c
 
 //-----Pedidos------
 Route::get('/pedido/store', [App\Http\Controllers\PedidoController::class, 'store'])->name('pedido.store');
+Route::get('/pedido/update/{id}', [App\Http\Controllers\PedidoController::class, 'update'])->name('pedido.update');
 Route::get('/pedidos', [App\Http\Controllers\PedidoController::class, 'index'])->name('pedido.index');
 
 

@@ -107,7 +107,14 @@ class PedidoController extends Controller
      */
     public function update(Request $request, Pedido $pedido)
     {
-        //
+        $idPedido=request('id');
+        $estado=request('estado');
+        $pedido=Pedido::find($idPedido)->get();
+        $pedido->estado=$estado;
+        dd($pedido);
+        $pedido->save();
+
+        return 0;
     }
 
     /**

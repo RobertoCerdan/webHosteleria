@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('head')
+<script src="{{ asset('js/admin.js') }}" defer></script>
+@endsection
+
 @section('contenedor')
 <table class="table table-responsive">
   <caption>Pedidos</caption>
@@ -9,6 +13,7 @@
       <th scope="col">Cliente</th>
       <th scope="col">Fecha</th>
       <th scope="col">Estado</th>
+      <th scope="col">Actualizar</th>
     </tr>
   </thead>
   <tbody>
@@ -35,6 +40,8 @@
             >En proceso</option>
           
       </select></td>
+      <td><button type="button" value="{{$pedido['id']}}" class="btn btn-warning actualizarEstado">&#10003;
+</button></td>
     </tr>
     @endforeach
   </tbody>
