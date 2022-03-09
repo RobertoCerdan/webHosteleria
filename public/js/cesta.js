@@ -1,6 +1,7 @@
 recuperarCesta();
 $('.aCesta').on('click', anadirACesta);
 $("#cart").on("click", toggle);
+$('.cantidad-producto').on('focusout', actualizarCantidad);
 
 
  
@@ -9,22 +10,16 @@ function toggle(){
 }
  
 function actualizarCantidad(){
-    cantidad = $('.cantidad-producto').val();
+    cantidad = $('#' +  this.id).val();
     url="/carrito/update/" + this.id + "?cantidad=" + cantidad;
-
-    alert(url);
     $.ajax({
         url : url,
         type : 'GET',
-        success : function(json) {
-            incluirElementosCesta(json);
+        success : function() {
         },
-    
-        // código a ejecutar si la petición falla;
-        // son pasados como argumentos a la función
-        // el objeto de la petición en crudo y código de estatus de la petición
-        error : function(xhr, status) {
-            alert('Disculpe, existió un problema');
+
+        error : function(xhr, status, textStatus) {
+            alert('Disculpe, existió un problema' +  textStatus);
         },
     });
 }
@@ -33,7 +28,6 @@ function actualizarCantidad(){
 function anadirACesta(){
     url="/carrito/store/" + this.id;
 
-    alert(url);
     $.ajax({
         url : url,
         type : 'GET',

@@ -134,15 +134,22 @@ class CarritoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $id=request('id');
         $cantidad=request('cantidad');
         $itemsCesta = Cart::content()->toArray();
+        //dd($itemsCesta);
         foreach ($itemsCesta as $clave => $valor){
             if($itemsCesta[$clave]['id']==$id){
                 Cart::update($clave, $cantidad);
             }
         }
-        return redirect()->route('carrito.show');
+        if (Auth::check()) {
+            Cart::store(Auth::user()->id);
+        }
+        else{
+            Cart::store();
+        }
     }
 
     /**

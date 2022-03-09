@@ -195,31 +195,6 @@ input:focus::-webkit-input-placeholder {
   color: transparent;
 }
 
-.btn {
-  background-color: #000 !important;
-  border-color: #000 !important;
-  color: white !important;
-  width: 100%;
-  font-size: 0.7rem !important;
-  margin-top: 4vh !important;
-  padding: 1vh !important;
-  border-radius: 0;
-}
-
-.btn:focus {
-  box-shadow: none;
-  outline: none;
-  box-shadow: none;
-  color: white;
-  -webkit-box-shadow: none;
-  -webkit-user-select: none;
-  transition: none;
-}
-
-.btn:hover {
-  color: white;
-}
-
 a {
   color: black;
 }

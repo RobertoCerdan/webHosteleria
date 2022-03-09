@@ -27,6 +27,7 @@ Auth::routes();
 
 //----Carrito
 Route::get('/carrito/store/{id}', [App\Http\Controllers\CarritoController::class, 'store'])->name('carrito.store');
+Route::get('/carrito/update/{id}', [App\Http\Controllers\CarritoController::class, 'update'])->name('carrito.update');
 Route::get('/carrito/destroy/{id}', [App\Http\Controllers\CarritoController::class, 'destroy'])->name('carrito.destroy');
 Route::get('/carrito/removeAll/{id}', [App\Http\Controllers\CarritoController::class, 'removeAll'])->name('carrito.removeAll');
 Route::get('/carrito/restore', [App\Http\Controllers\CarritoController::class, 'restore'])->name('carrito.restore');

@@ -2,7 +2,13 @@
 
 @section('contenedor')
 <div class="col-12 pt-5">
-<div class="row row-cols-1 row-cols-md-2 g-4 px-lg-5 ">
+<div class="row justify-content-center row-cols-1 row-cols-md-2 g-4 px-lg-5 ">
+    <form class="input-group rounded w-75" action="{{ route('producto.index') }}" method="GET">
+        <input id="barra-buscador" name="barra-buscador" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+        <button type="submit" class="input-group-text border-0" id="search-addon">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
 @if(Auth::user()->rol == 'Admin')
     @foreach ($productos as $producto)
     <div class="col producto">

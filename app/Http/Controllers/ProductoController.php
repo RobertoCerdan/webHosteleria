@@ -15,7 +15,14 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos=Producto::paginate(20);
+        $busqueda=request('barra-buscador');
+        $productos=null;
+        if($busqueda!=null){
+            $productos=Producto::where('nombre', 'LIKE', '%'.$busqueda.'%')->paginate(20);
+        }
+        else{
+            $productos=Producto::paginate(20);
+        }
         return view('producto.index', [
             'productos' => $productos
         ]);

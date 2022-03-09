@@ -32,7 +32,7 @@
                     <div class="col-2"><img class="img-fluid" src="/storage/imagenes/{{ $producto['imagen'] }}"></div>
                     <div class="col">
                         <div class="row text-muted">{{ $producto['name'] }}</div>
-                        <div class="row">Cotton T-shirt</div>
+                        <div class="row">{{ $producto['name'] }}</div>
                     </div>
                     <div class="col"> <input style="max-width: 5em;" type="number" id="{{$producto['id']}}"class="cantidad-producto form-control" placeholder="{{$producto['qty']}}" min="1" max="99"> </div>
                     <div class="col">{{ $producto['price'] }}&euro;</div><div class="col"><span class="close text-right"><a href="{{route('carrito.removeAll', $producto['id'])}}" >&#10005;</a></span></div>
@@ -57,7 +57,8 @@
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                 <div class="col">PRECIO TOTAL</div>
                 <div class="col text-right">&euro; {{ Cart::total(); }}</div>
-            </div> <button class="btn">PAGAR</button>
+            </div>
+            <button class="btn btn-primary w-100">PAGAR</button>
         </div>
     </div>
 </div>
