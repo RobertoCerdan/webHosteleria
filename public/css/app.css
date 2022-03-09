@@ -11339,6 +11339,11 @@ footer {
   background: #d4d4d4;
 }
 
+.tabla {
+  border: 2px solid black;
+  border-radius: 0.25rem !important;
+}
+
 @media screen and (min-width: 1200px) {
   .productocard {
     width: 70%;

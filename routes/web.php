@@ -22,6 +22,7 @@ Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->n
 
 
 Route::get('/producto', [App\Http\Controllers\ProductoController::class, 'index'])->name('producto.index')->middleware('auth');
+Route::get('/producto/filtrar',[App\Http\Controllers\ProductoController::class, 'filtrar'])->name('producto.filtro')->middleware('auth');
 Route::get('/producto/create', [App\Http\Controllers\ProductoController::class, 'create'])->name('producto.create')->middleware('auth');
 Route::post('/producto/store', [App\Http\Controllers\ProductoController::class, 'store'])->name('producto.store')->middleware('auth');
 Route::get('/producto/edit/{id}', [App\Http\Controllers\ProductoController::class, 'edit'])->name('producto.edit')->middleware('auth');

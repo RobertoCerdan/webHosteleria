@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container-fluid main">
+    <div class="container-fluid ">
         <header class="row">
         <nav class="navbar fixed-top navbar-light bg-light bg-opacity-75">
             <div class="container-fluid">
@@ -56,7 +56,7 @@
             </div>
         </nav>
         </header>
-        <div class="row bg-secondary bg-opacity-25 mt-5">
+        <div class="row bg-secondary bg-opacity-25 mt-5 min-vh-100">
             @yield('contenedor')
         </div>
         <footer class="row">
