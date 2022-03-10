@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comentario;
+use Illuminate\Support\Facades\Auth;
+
 
 class ComentarioController extends Controller
 {
@@ -35,12 +37,15 @@ class ComentarioController extends Controller
      */
     public function store(Request $request)
     {
-        $id=request('id');
+        $producto_id=request('id');
+
         $comentario = new Comentario();
-        $comentario->producto_id=$id;
-        $comentario->contenido=request('comentario-contenido');
+        $comentario->user_id=Auth::user()->id;
+        $comentario->producto_id=$producto_id;
+        $comentario->contenido=request('contenido-comentario');
         $comentario->fecha=date("Y/m/d");
         $comentario->save();
+        return redirect()->route('producto.show', $producto_id);
     }
 
     /**
@@ -83,8 +88,12 @@ class ComentarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        $id=request('id');
+        $comentario = Comentario::find($id);
+        $producto_id=$comentario->producto->id;
+        $comentario->delete();
+        return redirect()->route('producto.show', $producto_id);
     }
 }

@@ -72,11 +72,6 @@ footer {
   }
 }
 /*-------estilo comentarios-----------*/
-body {
-  background-color: #D32F2F;
-  font-family: "Calibri", sans-serif !important;
-}
-
 .card-no-border .card {
   border: 0px;
   border-radius: 4px;
@@ -318,7 +313,7 @@ a:hover {
 }
 
 .shopping-cart {
-  margin: 60px 0;
+  margin: 10px 0;
   float: right;
   background: whitesmoke;
   width: 320px;

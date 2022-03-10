@@ -51,7 +51,8 @@ Route::get('/pedido/update/{id}', [App\Http\Controllers\PedidoController::class,
 Route::get('/pedidos', [App\Http\Controllers\PedidoController::class, 'index'])->name('pedido.index');
 
 //-----Comentarios-----
-Route::get('/comentario/store/{id}', [App\Http\Controllers\ComentarioController::class, 'store'])->name('comentario.store');
+Route::post('/comentario/store/{id}', [App\Http\Controllers\ComentarioController::class, 'store'])->name('comentario.store');
+Route::get('/comentario/destroy/{id}', [App\Http\Controllers\ComentarioController::class, 'destroy'])->name('comentario.destroy');
 
 //--------Prueba
 Route::get('/prueba/{archivo}', function ($archivo) {

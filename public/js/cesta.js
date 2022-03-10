@@ -28,12 +28,16 @@ function actualizarCantidad(){
 
 function anadirACesta(){
     url="/carrito/store/" + this.id;
-    alert(url);
     $.ajax({
         url : url,
         type : 'GET',
         success : function(json) {
             incluirElementosCesta(json);
+            $.notify("Se ha añadido el producto al carrito",
+            { position:"bottom right",
+            clickToHide: true,
+            className: 'success' });
+
         },
     
         // código a ejecutar si la petición falla;
@@ -52,7 +56,6 @@ function recuperarCesta(){
         url : url,
         type : 'GET',
         success : function(json) {
-            console.log(json);
             incluirElementosCesta(json);
         },
     
@@ -72,7 +75,6 @@ function incluirElementosCesta(productosJSON){
     productos=productosJSON;
     html="";
     for (const [key, producto] of Object.entries(productos)) {
-        console.log(producto);
         html+="<li class='clearfix row align-items-center'><div class='col-4'><img class='img-fluid' src='/storage/imagenes/" + producto['imagen'] + "' alt='" +  producto['name'] +"' /></div><div class='col-8'><span class='item-name'>" + producto['name'] + "</span><span class='item-price'>" + producto['price'] + "€</span><span class='item-quantity'>Cantidad: " + producto['qty'] + "</span></div></li>";
         numElementosCarrito+=producto['qty'];
         totalCarrito+=producto['price'] * producto['qty'];

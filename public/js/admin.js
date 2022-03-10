@@ -7,6 +7,10 @@ function actualizarEstadoPedido(){
         url : url,
         type : 'GET',
         success : function(json) {
+            $.notify("Se ha cambiado el estado del pedido correctamente",
+            { position:"bottom right",
+            clickToHide: true,
+            className: 'success' });
         },
     
         // código a ejecutar si la petición falla;

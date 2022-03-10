@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/cesta.js') }}" defer></script>
+    <script src="{{ asset('js/notify.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <title>Document</title>
     @yield('head')
 </head>
 <body>
-    <div class="container-fluid ">
+    <div class="container-fluid">
+        <div class="row w-100" style="min-height: 5em;"></div>
         <header class="row">
         <nav class="navbar fixed-top navbar-light bg-light bg-opacity-75">
             <div class="container-fluid">
@@ -77,7 +79,7 @@
 
 
 
-        <div class="row bg-secondary bg-opacity-25 min-vh-100 align-items-center">
+        <div class="row bg-secondary bg-opacity-25 min-vh-100">
         
             @yield('contenedor')
         </div>
