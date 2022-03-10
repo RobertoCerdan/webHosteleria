@@ -12,25 +12,41 @@
     @yield('head')
 </head>
 <body>
-    <div class="container-fluid main">
+    <div class="container-fluid ">
         <header class="row">
         <nav class="navbar fixed-top navbar-light bg-light bg-opacity-75">
             <div class="container-fluid">
                 <div class="dropdown">
-                <a class="dropdown text-dark" href="#" role="button" id="dropdownPerfil" data-bs-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                    </svg>
-                </a>
+                    <a class="dropdown text-dark" href="#" role="button" id="dropdownPerfilAdmin" data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                    </a>
 
-                <ul class="dropdown-menu" aria-labelledby="dropdownPerfil">
-                    <li class="dropdown-item active">{{Auth::user()->name}}</li>
-                    <li><a class="dropdown-item" href="#">Ver perfil</a></li>
-                    <li><a class="dropdown-item" href="#">Añadir Producto</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-danger" href="{{ route('logout') }}">Cerrar Session</a></li>
-                </ul>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownPerfilAdmin">
+                        <li class="dropdown-item active">{{Auth::user()->name}}</li>
+                        <li><a class="dropdown-item" href="{{route('perfil.show')}}">Ver perfil</a></li>
+                        <li><a class="dropdown-item" href="{{route('producto.create')}}">Añadir Producto</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="{{ route('logout') }}">Cerrar Session</a></li>
+                    </ul>
+                </div>
+            @else
+                <div class="dropdown">
+                    <a class="dropdown text-dark" href="#" role="button" id="dropdownPerfil" data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                    </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownPerfil">
+                            <li class="dropdown-item active">{{Auth::user()->name}}</li>
+                            <li><a class="dropdown-item" href="{{route('perfil.show')}}">Ver perfil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="{{ route('logout') }}">Cerrar Session</a></li>
+                        </ul>
                 </div>
                 <a class="nav-link text-dark h4" href="#">Hosteleria Mendizorrotza</a>
                 <div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StorageController;
 
@@ -26,6 +27,9 @@ class ProductoController extends Controller
         return view('producto.index', [
             'productos' => $productos
         ]);
+        $productos=  Producto::paginate(10);
+        $categorias = DB::table('productos')->select('categoria')->distinct()->get();
+        return view('producto.index',compact('productos'), ['categorias' => $categorias]);
     }
 
     /**
@@ -64,7 +68,7 @@ class ProductoController extends Controller
         $producto->imagen=$nombreArchivo;
         $producto->save();
 
-        return redirect()->route('producto.create');
+        return redirect()->route('producto.index');
     }
 
     /**
@@ -112,19 +116,19 @@ class ProductoController extends Controller
         $categoria=request('categoria');
 
         $archivo=$request->file('imagen');
-        $nombreArchivo=$archivo->getClientOriginalName();
         if(request('imagen')!=null){
+            $nombreArchivo=$archivo->getClientOriginalName();
             StorageController::destroy($producto->imagen);
             StorageController::save($archivo, $nombreArchivo);
+            $producto->imagen=$nombreArchivo;
         }
         $producto->nombre=$nombreProducto;
         $producto->precio=$precio;
         $producto->descripcion=$descripcion;
         $producto->categoria=$categoria;
-        $producto->imagen=$nombreArchivo;
         $producto->save();
 
-        return redirect()->route('producto.edit', $producto->id);
+        return redirect()->route('producto.show', $producto->id);
     }
 
     /**
@@ -145,5 +149,12 @@ class ProductoController extends Controller
 
         return redirect()->route('producto.index');
 
+    }
+
+    public function filtrar(Request $request){
+        $categoria = request('categoria');
+        $productos=  Producto::where('categoria','LIKE','%'.$categoria.'%')->paginate(10);
+        $categorias = DB::table('productos')->select('categoria')->distinct()->get();
+        return view('producto.index',compact('productos'), ['categorias' => $categorias]);
     }
 }

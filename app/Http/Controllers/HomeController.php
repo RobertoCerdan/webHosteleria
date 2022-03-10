@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\Producto;
 
 class HomeController extends Controller
 {
@@ -24,7 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('producto.index');
+        $productos= Producto::paginate(10);
+        $categorias = DB::table('productos')->select('categoria')->distinct()->get();
+        return view('producto.index', compact('productos') ,['categorias' => $categorias]);
     }
 
     public function login()

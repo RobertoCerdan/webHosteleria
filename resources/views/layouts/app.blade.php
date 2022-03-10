@@ -76,6 +76,13 @@
         </nav>-->
         
         <main class="py-4">
+        <nav class="navbar fixed-top navbar-light bg-transparent">
+            <div class="container">
+                <p class="nav-link text-dark h5">Hosteleria Mendizorrotza</p>
+                <p class="nav-link text-dark h5">ES</p>
+            </div>
+        </nav>
+        <main>
             @yield('content')
         </main>
     </div>

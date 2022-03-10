@@ -1,0 +1,72 @@
+footer{
+    z-index: 3;
+}
+
+.arriba{
+    position: absolute;
+    top: 3%;
+    left: 93%;
+}
+
+.productocard{
+    transition:0.5s;
+    cursor:pointer;
+  }
+
+.productocard:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+}
+.mt-6 {
+    margin-top: 5rem !important;
+}
+
+.main::-webkit-scrollbar{
+    width: 8px;     
+    height: 8px;    
+    display: none;
+}
+
+.main::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.main::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.main::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+
+.main::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+}
+
+.main::-webkit-scrollbar-track:hover,
+.main::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
+}
+
+.tabla{
+    border: 2px solid black;
+    border-radius: 0.25rem !important; 
+  }
+
+@media screen and (min-width:1200px) {
+    .productocard{
+       width: 70%; 
+    }
+
+    .anadir{
+       width: 85% !important;
+    }
+
+     .producto:nth-child(2n+1){
+        display: flex;
+        justify-content: flex-end;
+    }
+}
