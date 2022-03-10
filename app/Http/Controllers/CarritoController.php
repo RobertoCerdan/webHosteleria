@@ -93,7 +93,13 @@ class CarritoController extends Controller
         }
         $itemsCesta = Cart::content()->toArray();
         foreach ($itemsCesta as $clave => $valor){
-            $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+            if(Producto::find($valor['id']) != null){
+                $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+            }
+            else{
+                unset($itemsCesta[$clave]);
+                Cart::remove($clave);
+            }
         }
         return $itemsCesta;
     }
@@ -111,7 +117,13 @@ class CarritoController extends Controller
     {
         $itemsCesta = Cart::content()->toArray();
         foreach ($itemsCesta as $clave => $valor){
-            $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+            if(Producto::find($valor['id']) != null){
+                $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+            }
+            else{
+                unset($itemsCesta[$clave]);
+                Cart::remove($clave);
+            }
         }
         return view('carrito.confirmacion', [
             'productos' => $itemsCesta
@@ -180,7 +192,13 @@ class CarritoController extends Controller
     {
         $itemsCesta = Cart::content()->toArray();
         foreach ($itemsCesta as $clave => $valor){
-            $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+            if(Producto::find($valor['id']) != null){
+                $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+            }
+            else{
+                unset($itemsCesta[$clave]);
+                Cart::remove($clave);
+            }
         }
         return $itemsCesta;
     }
