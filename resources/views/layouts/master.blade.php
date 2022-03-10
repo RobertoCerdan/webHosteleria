@@ -16,6 +16,7 @@
         <header class="row">
         <nav class="navbar fixed-top navbar-light bg-light bg-opacity-75">
             <div class="container-fluid">
+            @if (Auth::user()->rol == 'Admin')
                 <div class="dropdown">
                     <a class="dropdown text-dark" href="#" role="button" id="dropdownPerfilAdmin" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -48,6 +49,7 @@
                             <li><a class="dropdown-item text-danger" href="{{ route('logout') }}">Cerrar Session</a></li>
                         </ul>
                 </div>
+                @endif
                 <a class="nav-link text-dark h4" href="#">Hosteleria Mendizorrotza</a>
                 <div>
                     <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="cart-badge badge">{{ Cart::count(); }}</span></a>
