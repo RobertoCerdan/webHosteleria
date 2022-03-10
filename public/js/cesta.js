@@ -28,6 +28,7 @@ function actualizarCantidad(){
 
 function anadirACesta(){
     url="/carrito/store/" + this.id;
+    alert(url);
     $.ajax({
         url : url,
         type : 'GET',
@@ -51,6 +52,7 @@ function recuperarCesta(){
         url : url,
         type : 'GET',
         success : function(json) {
+            console.log(json);
             incluirElementosCesta(json);
         },
     

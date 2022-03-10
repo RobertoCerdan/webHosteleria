@@ -85,12 +85,8 @@ class CarritoController extends Controller
 
     static public function restore()
     {
-        
         if (Auth::check()) {
-            $userId=Auth::user()->id;
-        }
-        if (Auth::check()) {
-            Cart::restore($userId);
+            Cart::restore(Auth::user()->id);
         }
         else{
             Cart::restore();
