@@ -109,9 +109,8 @@ class PedidoController extends Controller
     {
         $idPedido=request('id');
         $estado=request('estado');
-        $pedido=Pedido::find($idPedido)->get();
+        $pedido=Pedido::find($idPedido);
         $pedido->estado=$estado;
-        dd($pedido);
         $pedido->save();
 
         return 0;
