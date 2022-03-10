@@ -15,7 +15,7 @@
 @endsection
 @section('contenedor')
 
-<div class="card">
+<div class="carB mt-3 mx-auto" style="max-width: 1500px;">
     <div class="row">
         <div class="col-md-8 cart">
             <div class="title">

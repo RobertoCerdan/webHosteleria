@@ -77,7 +77,7 @@
 
 
 
-        <div class="row bg-secondary bg-opacity-25 mt-5">
+        <div class="row bg-secondary bg-opacity-25 min-vh-100 align-items-center">
         
             @yield('contenedor')
         </div>

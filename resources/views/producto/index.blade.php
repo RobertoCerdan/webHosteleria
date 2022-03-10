@@ -9,6 +9,7 @@
             <i class="fa fa-search"></i>
         </button>
     </form>
+</div>
 @if(Auth::user()->rol == 'Admin')
 
 <div class="col-3 pt-5 offset-xl-2">
@@ -103,6 +104,7 @@
         @endforeach
     </div>
     </div>
+</div>
     <div class="d-flex col-12 justify-content-center">
         {!! $productos->links() !!}
     </div>

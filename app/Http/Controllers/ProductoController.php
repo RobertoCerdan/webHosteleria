@@ -24,12 +24,8 @@ class ProductoController extends Controller
         else{
             $productos=Producto::paginate(20);
         }
-        return view('producto.index', [
-            'productos' => $productos
-        ]);
-        $productos=  Producto::paginate(10);
         $categorias = DB::table('productos')->select('categoria')->distinct()->get();
-        return view('producto.index',compact('productos'), ['categorias' => $categorias]);
+        return view('producto.index',compact('productos','categorias'));
     }
 
     /**
@@ -155,6 +151,6 @@ class ProductoController extends Controller
         $categoria = request('categoria');
         $productos=  Producto::where('categoria','LIKE','%'.$categoria.'%')->paginate(10);
         $categorias = DB::table('productos')->select('categoria')->distinct()->get();
-        return view('producto.index',compact('productos'), ['categorias' => $categorias]);
+        return view('producto.index',compact('productos','categorias'));
     }
 }

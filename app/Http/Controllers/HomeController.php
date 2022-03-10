@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         $productos= Producto::paginate(10);
         $categorias = DB::table('productos')->select('categoria')->distinct()->get();
-        return view('producto.index', compact('productos') ,['categorias' => $categorias]);
+        return view('producto.index',compact('productos','categorias'));
     }
 
     public function login()

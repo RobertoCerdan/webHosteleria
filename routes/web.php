@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-Route::get('/home', [App\Http\Controllers\ProductoController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\ProductoController::class, 'filtrar'])->name('home');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'login']);
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
@@ -42,6 +42,7 @@ Route::get('/producto/edit/{id}', [App\Http\Controllers\ProductoController::clas
 Route::post('/producto/update/{id}', [App\Http\Controllers\ProductoController::class, 'update'])->name('producto.update');
 Route::get('/producto/show/{id}', [App\Http\Controllers\ProductoController::class, 'show'])->name('producto.show');
 Route::get('/producto/destroy/{id}', [App\Http\Controllers\ProductoController::class, 'destroy'])->name('producto.destroy');
+Route::get('/producto/filtrar', [App\Http\Controllers\ProductoController::class, 'filtrar'])->name('producto.filtro');
 
 
 //-----Pedidos------
