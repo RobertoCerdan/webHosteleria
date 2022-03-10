@@ -3,12 +3,10 @@ $('.actualizarEstado').on('click', actualizarEstadoPedido)
 function actualizarEstadoPedido(){
     estado = $('#' + this.value).val();
     url="/pedido/update/" +  this.value + "?estado=" +  estado;
-    alert(url);
     $.ajax({
         url : url,
         type : 'GET',
         success : function(json) {
-            alert('funciono');
         },
     
         // código a ejecutar si la petición falla;

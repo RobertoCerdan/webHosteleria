@@ -166,6 +166,7 @@ class CarritoController extends Controller
     static public function destroy()
     {
         Cart::destroy();
+        //dd(Cart::content());
         if (Auth::check()) {
             Cart::store(Auth::user()->id);
         }
