@@ -9,8 +9,14 @@ class Producto extends Model
 {
     use HasFactory;
 
-    public function pedidio()
+    public function pedidos()
     {
-        return $this->belongsToMany(Pedido::class);
+        return $this->hashMany(Pedido::class);
+    }
+
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class);
     }
 }

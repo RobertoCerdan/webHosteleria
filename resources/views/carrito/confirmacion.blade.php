@@ -29,7 +29,7 @@
             @foreach($productos as $producto)
             <div class="row border-top border-bottom">
                 <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="/storage/imagenes/{{ $producto['imagen'] }}"></div>
+                    <div class="col-2"><img class="img-fluid img-confirmacion" src="/storage/imagenes/{{ $producto['imagen'] }}"></div>
                     <div class="col">
                         <div class="row text-muted">{{ $producto['name'] }}</div>
                         <div class="row">{{ $producto['name'] }}</div>

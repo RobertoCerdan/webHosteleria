@@ -50,6 +50,8 @@ Route::get('/pedido/store', [App\Http\Controllers\PedidoController::class, 'stor
 Route::get('/pedido/update/{id}', [App\Http\Controllers\PedidoController::class, 'update'])->name('pedido.update');
 Route::get('/pedidos', [App\Http\Controllers\PedidoController::class, 'index'])->name('pedido.index');
 
+//-----Comentarios-----
+Route::get('/comentario/store/{id}', [App\Http\Controllers\ComentarioController::class, 'store'])->name('comentario.store');
 
 //--------Prueba
 Route::get('/prueba/{archivo}', function ($archivo) {

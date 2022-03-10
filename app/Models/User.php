@@ -42,8 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function pedido()
+    public function pedidos()
     {
         return $this->hasMany(Pedido::class);
+    }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class);
     }
 }

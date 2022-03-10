@@ -63,5 +63,6 @@
         </div>
     </div>
 </div>
-
+@include('comentarios.index')
 @endsection
+
