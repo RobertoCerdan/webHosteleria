@@ -3,13 +3,21 @@ $('.aCesta').on('click', anadirACesta);
 $('.aCesta').on('click', recuperarCesta);
 $("#cart").on("click", toggle);
 $('.cantidad-producto').on('focusout', actualizarCantidad);
-
+$('.pagar').on('click', confirmacionPago)
 
  
 function toggle(){
    $(".shopping-cart").fadeToggle( "fast");
 }
- 
+
+function confirmacionPago(){
+    $.notify("El pago se ha realizado correctamente",
+            { position:"bottom right",
+            clickToHide: true,
+            className: 'success' });
+} 
+
+
 function actualizarCantidad(){
     cantidad = $('#' +  this.id).val();
     url="/carrito/update/" + this.id + "?cantidad=" + cantidad;

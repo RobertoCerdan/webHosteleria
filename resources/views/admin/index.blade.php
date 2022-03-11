@@ -5,7 +5,7 @@
 @endsection
 
 @section('contenedor')
-<table class="table table-responsive mx-auto" style="max-width: 1500px;">
+<table class="table table-responsive mx-auto mt-5 mt-sm-0" style="max-width: 1500px;">
   <caption>Pedidos</caption>
   <thead>
     <tr class="d-flex justify-content-around">

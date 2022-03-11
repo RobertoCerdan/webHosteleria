@@ -15,7 +15,7 @@
 @endsection
 @section('contenedor')
 <div class="d-flex align-items-center">
-    <div class="carB mt-3 mx-auto" style="min-width: 700px; max-width: 1800px;">
+    <div class="carB mt-3 mx-auto w-100" style="max-width: 1500px;">
         <div class="row">
             <div class="col-md-8 cart">
                 <div class="title">
@@ -58,7 +58,7 @@
                     <div class="col">PRECIO TOTAL</div>
                     <div class="col text-right">&euro; {{ Cart::total(); }}</div>
                 </div>
-                <a class="btn btn-primary w-100" href="{{ route('pedido.store') }}">PAGAR</a>
+                <a class="btn btn-primary w-100 pagar" href="{{ route('pedido.store') }}">PAGAR</a>
             </div>
         </div>
     </div>
