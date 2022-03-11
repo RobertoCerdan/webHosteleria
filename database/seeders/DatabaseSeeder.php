@@ -25,14 +25,29 @@ class DatabaseSeeder extends Seeder
         Producto::factory()->count(70)->create();
         User::factory()->count(30)->create();
 
+        DB::table('users')->insert([
+            'name'=>"admin",
+            'telefono' => '111111111',
+            'email'=>"admin@gmail.com",
+            'password'=>Hash::make("12345678"),
+            'rol'=>"admin",
+        ]);
+
+        DB::table('users')->insert([
+            'name'=>"user",
+            'telefono' => '111111111',
+            'email'=>"user@gmail.com",
+            'password'=>Hash::make("12345678"),
+            'rol'=>"Cliente",
+        ]);
+
         DB::statement('SET FOREIGN_KEY_CHECKS = 0;'); // Desactivamos la revisión de claves foráneas
-        
         
         
         foreach(Producto::all() as $producto){
             $user= User::find(random_int(1,count(User::all())));
             Comentario::factory(random_int(2,15))->create(['producto_id' => $producto->id,
-                                                            'user_id' => 23]);
+                                                            'user_id' => $user->id]);
         }
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
