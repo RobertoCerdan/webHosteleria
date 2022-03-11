@@ -25,9 +25,17 @@ class DatabaseSeeder extends Seeder
         Producto::factory()->count(70)->create();
         User::factory()->count(30)->create();
 
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0;'); // Desactivamos la revisión de claves foráneas
         
-        $this->call(SolucionSeeder::class);
         
+        
+        foreach(Producto::all() as $producto){
+            $user= User::find(random_int(1,count(User::all())));
+            Comentario::factory(random_int(2,15))->create(['producto_id' => $producto->id,
+                                                            'user_id' => 23]);
+        }
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
         
     }
 }
