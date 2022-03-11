@@ -24,11 +24,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         Producto::factory()->count(70)->create();
         User::factory()->count(30)->create();
-        foreach(Producto::all() as $producto){
-            $user= User::find(random_int(1,count(User::all())));
-            Comentario::factory(random_int(2,15))->create(['producto_id' => $producto->id,
-                                                            'user_id' => $user->id]);
-        }
+
         DB::table('users')->insert([
             'name'=>"admin",
             'telefono' => '111111111',
@@ -44,5 +40,12 @@ class DatabaseSeeder extends Seeder
             'password'=>Hash::make("12345678"),
             'rol'=>"Cliente",
         ]);
+        
+        foreach(Producto::all() as $producto){
+            $user= User::find(random_int(1,count(User::all())));
+            Comentario::factory(random_int(2,15))->create(['producto_id' => $producto->id,
+                                                            'user_id' => $user->id]);
+        }
+        
     }
 }
