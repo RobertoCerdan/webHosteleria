@@ -5,26 +5,26 @@
 @endsection
 
 @section('contenedor')
-<table class="table table-responsive text-center">
+<table class="table table-responsive mx-auto" style="max-width: 1500px;">
   <caption>Pedidos</caption>
   <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Cliente</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Estado</th>
-      <th scope="col">Actualizar</th>
+    <tr class="d-flex justify-content-around">
+      <th>ID</th>
+      <th>Cliente</th>
+      <th>Fecha</th>
+      <th>Estado</th>
+      <th>Actualizar</th>
     </tr>
   </thead>
   <tbody>
     @foreach($pedidos as $pedido)
-    <tr>
+    <tr  class="d-flex justify-content-around mt-2 p-1">
       <th scope="row">{{ $pedido['id'] }}</th>
       <td>{{ $pedido['user_name'] }}</td>
       <td>{{ $pedido['fechaReserva'] }}</td>
       <td><select id="{{ $pedido['id'] }}" class="form-select" >
-          <option value="En proceso" 
-            @if($pedido['estado']== 'En proceso')
+          <option value="En Proceso" 
+            @if($pedido['estado']== 'En Proceso')
                 selected
             @endif
             >En proceso</option>
@@ -33,14 +33,14 @@
                 selected
             @endif
             >Preparado</option>
-            <option value="En proceso" 
+            <option value="Entregado" 
             @if($pedido['estado']== 'Entregado')
                 selected
             @endif
             >En proceso</option>
           
       </select></td>
-      <td class="d-flex justify-content-center"><button type="button" value="{{$pedido['id']}}" class="btn btn-warning actualizarEstado ml-3">&#10003;
+      <td><button type="button" value="{{$pedido['id']}}" class="btn btn-warning actualizarEstado ml-3">&#10003;
 </button></td>
     </tr>
     @endforeach

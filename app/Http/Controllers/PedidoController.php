@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PedidoListo;
+use App\Mail\PedidoCreado;
 use App\Models\Pedido;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Cart;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class PedidoController extends Controller
@@ -70,6 +74,7 @@ class PedidoController extends Controller
             ]);
         }
         CarritoController::destroy();
+        Mail::to($pedido->user->email)->send(new PedidoCreado($pedido));
         return view('carrito.confirmacion', [
             'productos' => CarritoController::getItems()
         ]);
@@ -112,8 +117,15 @@ class PedidoController extends Controller
         $pedido=Pedido::find($idPedido);
         $pedido->estado=$estado;
         $pedido->save();
+        
+        if($estado=='Preparado'){
+            Mail::to($pedido->user->email)->send(new PedidoListo($pedido));
+        }elseif($estado=='En proceso'){
+            Mail::to($pedido->user->email)->send(new PedidoCreado($pedido));
+        }
 
         return 0;
+
     }
 
     /**
