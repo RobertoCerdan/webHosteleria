@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         
         foreach(Producto::all() as $producto){
             Comentario::factory(random_int(2,15))->create(['producto_id' => $producto->id,
-                                                            'user_id' => random_int(1,count(User::all()))]);
+                                                            'user_id' => User::inRandomOrder()->first()->id]);
         }
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
