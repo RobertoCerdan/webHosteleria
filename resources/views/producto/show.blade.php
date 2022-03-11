@@ -31,7 +31,7 @@
         <h1 class="text-center mb-5">{{ $producto->nombre }}</h1>
         <div class="col-lg-6 mb-3 d-flex justify-content-center">
             <img class="img-fluid img-thumbnail" src="{{ asset('/storage/imagenes/' . $producto->imagen) }}">
-        </div>
+        </div>  
         <form  class="col-lg-5" action="{{ route('producto.update', $producto->id)}}" method="POST">
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre</label>
@@ -46,6 +46,7 @@
               <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="{{ $producto->descripcion }}" disabled></textarea>
             </div>
         </form>
+        <button  id="{{$producto->id}} " class="btn btn-success aCesta w-50" style="max-width: 500px;">Añadir a la cesta</button>
         
     </div>
     <div class="modal fade" id="modalBorrar{{$producto->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalBorrarLabel" aria-hidden="true">

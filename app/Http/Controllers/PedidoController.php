@@ -75,9 +75,7 @@ class PedidoController extends Controller
         }
         CarritoController::destroy();
         Mail::to($pedido->user->email)->send(new PedidoCreado($pedido));
-        return view('carrito.confirmacion', [
-            'productos' => CarritoController::getItems()
-        ]);
+        return redirect()->route('producto.index');
         
     }
 

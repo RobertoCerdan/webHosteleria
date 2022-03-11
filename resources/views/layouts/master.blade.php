@@ -30,7 +30,10 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownPerfilAdmin">
                         <li class="dropdown-item active">{{Auth::user()->name}}</li>
                         <li><a class="dropdown-item" href="{{route('perfil.show')}}">Ver perfil</a></li>
+                        <li><a class="dropdown-item" href="{{route('producto.index')}}">Productos</a></li>
+                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{route('producto.create')}}">Añadir Producto</a></li>
+                        <li><a class="dropdown-item" href="{{route('pedido.index')}}">Gestionar pedidos</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" href="{{ route('logout') }}">Cerrar Session</a></li>
                     </ul>
@@ -47,6 +50,7 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownPerfil">
                             <li class="dropdown-item active">{{Auth::user()->name}}</li>
                             <li><a class="dropdown-item" href="{{route('perfil.show')}}">Ver perfil</a></li>
+                            <li><a class="dropdown-item" href="{{route('producto.index')}}">Productos</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item text-danger" href="{{ route('logout') }}">Cerrar Session</a></li>
                         </ul>

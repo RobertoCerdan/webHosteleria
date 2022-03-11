@@ -41,7 +41,6 @@ class DatabaseSeeder extends Seeder
             'rol'=>"Cliente",
         ]);
 
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0;'); // Desactivamos la revisión de claves foráneas
         
         
         foreach(Producto::all() as $producto){
@@ -49,7 +48,6 @@ class DatabaseSeeder extends Seeder
                                                             'user_id' => User::inRandomOrder()->first()->id]);
         }
 
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
         
     }
 }
