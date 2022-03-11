@@ -2,8 +2,8 @@
 
 @section('contenedor')
 
-<div class="container shadow min-vh-75 py-5 ">
-  <div class="row justify-content-end pt-4">
+<div class="container shadow min-vh-100 py-5 ">
+  <div class="row justify-content-end pt-5">
   @if(Auth::guest())
   @else
     @if(Auth::user()->rol == 'Admin')

@@ -10,9 +10,8 @@
         </button>
     </form>
 </div>
-@if(Auth::user()->rol == 'Admin')
 
-<div class="col-3 pt-5 offset-xl-2">
+<div class="col-12  col-sm-7  col-md-5 col-lg-4 col-xxl-3 offset-xl-2 offset-lg-1">
     <form action="{{ route('producto.filtro')}}" method="get" accept-charset="UTF-8" enctype="multipart/form-data">
         <div class="input-group">
             <label for="plus"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -32,7 +31,7 @@
     </form> 
     </div>
 </div>
-
+@if(Auth::user()->rol == 'Admin')
 <div class="col-12 pt-3">
 <div class="row row-cols-1 row-cols-md-2 g-4 px-lg-5 ">
     @foreach ($productos as $producto)
@@ -86,7 +85,7 @@
     </div>
     @endforeach
 @else
-<div class="col-12 pt-5">
+<div class="col-12 pt-3">
 <div class="row row-cols-1 row-cols-md-2 g-4 px-lg-5 ">
     @foreach ($productos as $producto)
         <div class="col producto">
@@ -105,7 +104,7 @@
     </div>
     </div>
 </div>
-    <div class="d-flex col-12 justify-content-center">
+    <div class="d-flex col-12 my-4 justify-content-center">
         {!! $productos->links() !!}
     </div>
 @endif

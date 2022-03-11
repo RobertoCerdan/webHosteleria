@@ -49,10 +49,15 @@ Route::get('/producto/filtrar', [App\Http\Controllers\ProductoController::class,
 Route::get('/pedido/store', [App\Http\Controllers\PedidoController::class, 'store'])->name('pedido.store');
 Route::get('/pedido/update/{id}', [App\Http\Controllers\PedidoController::class, 'update'])->name('pedido.update');
 Route::get('/pedidos', [App\Http\Controllers\PedidoController::class, 'index'])->name('pedido.index');
+Route::get('/pedido/destroy/{id}', [App\Http\Controllers\PedidoController::class, 'destroy'])->name('pedido.destroy');
+
 
 //-----Comentarios-----
 Route::post('/comentario/store/{id}', [App\Http\Controllers\ComentarioController::class, 'store'])->name('comentario.store');
 Route::get('/comentario/destroy/{id}', [App\Http\Controllers\ComentarioController::class, 'destroy'])->name('comentario.destroy');
+
+
+
 
 //--------Prueba
 Route::get('/prueba/{archivo}', function ($archivo) {
@@ -68,5 +73,7 @@ Route::post('/img/store', [App\Http\Controllers\StorageController::class, 'store
 Route::get('/perfil/show', [App\Http\Controllers\PerfilController::class, 'show'])->name('perfil.show')->middleware('auth');
 Route::get('/perfil/edit/{id}', [App\Http\Controllers\PerfilController::class, 'edit'])->name('perfil.edit')->middleware('auth');
 Route::post('/perfil/update/{id}', [App\Http\Controllers\PerfilController::class, 'update'])->name('perfil.update')->middleware('auth');
+Route::get('/perfil/destroy/{id}', [App\Http\Controllers\PerfilController::class, 'destroy'])->name('perfil.destroy')->middleware('auth');
+
 
 

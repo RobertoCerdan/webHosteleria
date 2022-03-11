@@ -20,7 +20,7 @@
             <div class="container-fluid">
             @if (Auth::user()->rol == 'Admin')
                 <div class="dropdown">
-                    <a class="dropdown text-dark" href="#" role="button" id="dropdownPerfilAdmin" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="dropdown text-dark navbar-brand"  href="#" role="button" id="dropdownPerfilAdmin" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -37,7 +37,7 @@
                 </div>
             @else
                 <div class="dropdown">
-                    <a class="dropdown text-dark" href="#" role="button" id="dropdownPerfil" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="dropdown text-dark navbar-brand" href="#" role="button" id="dropdownPerfil" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -79,7 +79,7 @@
 
 
 
-        <div class="row bg-secondary bg-opacity-25 min-vh-100">
+        <div class="row bg-secondary bg-opacity-25 min-vh-100 align-items-center">
         
             @yield('contenedor')
         </div>

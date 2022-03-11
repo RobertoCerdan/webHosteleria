@@ -75,7 +75,7 @@
             </div>
         </nav>-->
         
-        <main class="py-4">
+        <main>
         <nav class="navbar fixed-top navbar-light bg-transparent">
             <div class="container">
                 <p class="nav-link text-dark h5">Hosteleria Mendizorrotza</p>
