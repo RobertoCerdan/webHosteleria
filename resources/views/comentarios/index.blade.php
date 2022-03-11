@@ -10,7 +10,7 @@
                 <h6 class="card-subtitle">Opiniones de clientes</h6>
                 <div class="comment-widgets m-b-20 my-1">
                 @foreach($producto->comentarios as $comentario)    
-                <div class="card m-3">
+                <div class="card m-3 p-2">
                     <div class="d-flex flex-row comment-row">
                         <div class="comment-text w-100">
                             <h5>{{ $comentario->user->name }}</h5>
