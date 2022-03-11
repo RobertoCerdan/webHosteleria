@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Cart;
+use App\Models\Producto;
 
 class CarritoController extends Controller
 {
@@ -27,39 +28,78 @@ class CarritoController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    static public function removeAll(Request $request){
+        $id=request('id');
+        $itemsCesta = Cart::content()->toArray();
+        foreach ($itemsCesta as $clave => $valor){
+            if($itemsCesta[$clave]['id']==$id){
+                Cart::remove($clave);
+                if (Auth::check()) {
+                    Cart::store(Auth::user()->id);
+                }
+                else{
+                    Cart::store();
+                }
+                return redirect()->route('carrito.show');
+            }
+        }
+        return redirect()->route('carrito.show');
+        
+    }
+
     static public function store(Request $request)
     {
+        if (Auth::check()) {
+            $userId=Auth::user()->id;
+        }
         
-        $userId=Auth::user()->id;
         
         
-        $nombre=request('nombre');
-        $productoId=request('productoId');
-        $cantidad=request('cantidad');
-        $precio=request('precio');
+        $productoId=request('id');
+        $producto=Producto::find($productoId);
+        
+        //$cantidad=request('cantidad');
+        //precio=request('precio');
         
 
-        Cart::add($productoId, $nombre, $cantidad, $precio);
-        Cart::store($userId);
-        return Cart::content();
-
+        Cart::add($producto->id, $producto->nombre, 1, $producto->precio)->associate('Producto');
+        if (Auth::check()) {
+            Cart::store($userId);
+        }
+        else{
+            Cart::store();
+        }
+        $itemsCesta = Cart::content()->toArray();
+        foreach ($itemsCesta as $clave => $valor){
+            $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+        }
+        return $itemsCesta;
     }
 
     static public function restore()
     {
-        
-        $userId=Auth::user()->id;
-        
-        Cart::restore($userId);
-        return Cart::content();
+        if (Auth::check()) {
+            Cart::restore(Auth::user()->id);
+        }
+        else{
+            Cart::restore();
+        }
+        $itemsCesta = Cart::content()->toArray();
+        foreach ($itemsCesta as $clave => $valor){
+            $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+        }
+        return $itemsCesta;
     }
+
+
+  
 
     /**
      * Display the specified resource.
@@ -67,9 +107,15 @@ class CarritoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $itemsCesta = Cart::content()->toArray();
+        foreach ($itemsCesta as $clave => $valor){
+            $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+        }
+        return view('carrito.confirmacion', [
+            'productos' => $itemsCesta
+        ]);
     }
 
     /**
@@ -92,7 +138,22 @@ class CarritoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $id=request('id');
+        $cantidad=request('cantidad');
+        $itemsCesta = Cart::content()->toArray();
+        //dd($itemsCesta);
+        foreach ($itemsCesta as $clave => $valor){
+            if($itemsCesta[$clave]['id']==$id){
+                Cart::update($clave, $cantidad);
+            }
+        }
+        if (Auth::check()) {
+            Cart::store(Auth::user()->id);
+        }
+        else{
+            Cart::store();
+        }
     }
 
     /**
@@ -101,8 +162,27 @@ class CarritoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    static public function destroy()
     {
-        //
+        Cart::destroy();
+        //dd(Cart::content());
+        if (Auth::check()) {
+            Cart::store(Auth::user()->id);
+        }
+        else{
+            Cart::store();
+        }
     }
+
+
+    static public function getItems()
+    {
+        $itemsCesta = Cart::content()->toArray();
+        foreach ($itemsCesta as $clave => $valor){
+            $itemsCesta[$clave]['imagen']=Producto::find($valor['id'])->imagen;
+        }
+        return $itemsCesta;
+    }
+    
 }

@@ -2,7 +2,7 @@
 
 @section('contenedor')
 
-<div class="container shadow min-vh-100 py-2">
+<div class="container shadow min-vh-100 py-5">
   <div class="row justify-content-end pt-4">        
       <div class="mb-1 mt-1" style="width: 3em;">
         <a href="{{route('perfil.show')}}">

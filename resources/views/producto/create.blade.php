@@ -3,7 +3,7 @@
 @section('contenedor')
 
 <div class="col-12 pt-5 min-vh-100">
-    <div class="row justify-content-end">
+    <div class="row justify-content-end py-5">
         <div class="mb-1 mt-1" style="width: 3em;">
             <a href="{{route('producto.index')}}">
             <img class="img-fluid" src="{{ asset('iconos/volver.png') }}">
@@ -42,5 +42,4 @@
     <button type="submit" class="btn btn-primary col-4 col-xl-3">Añadir</button>
 
 </form>
-</div>
 @endsection

@@ -5,17 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <title>Document</title>
+    <script src="{{ asset('js/cesta.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <title>Document</title>
+    @yield('head')
 </head>
 <body>
     <div class="container-fluid ">
         <header class="row">
         <nav class="navbar fixed-top navbar-light bg-light bg-opacity-75">
-            <div class="container-fluid">
-            @if(Auth::user()->rol == 'Admin')
+            <div class="container">
+            @if (Auth::user()->rol == 'Admin')
                 <div class="dropdown">
-                    <a class="dropdown text-dark" href="#" role="button" id="dropdownPerfilAdmin" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="dropdown text-dark navbar-brand"  href="#" role="button" id="dropdownPerfilAdmin" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -32,7 +35,7 @@
                 </div>
             @else
                 <div class="dropdown">
-                    <a class="dropdown text-dark" href="#" role="button" id="dropdownPerfil" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="dropdown text-dark navbar-brand" href="#" role="button" id="dropdownPerfil" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -46,17 +49,36 @@
                             <li><a class="dropdown-item text-danger" href="{{ route('logout') }}">Cerrar Session</a></li>
                         </ul>
                 </div>
-            @endif   
-                <a class="nav-link text-dark h4" href="#">Hosteleria Mendizorrotza</a>
+                @endif
+                <a class="nav-link text-dark h4" href="#">Mendizorrotza</a>
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                    </svg>
+                    <a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="cart-badge badge">{{ Cart::count(); }}</span></a>
                 </div>
             </div>
         </nav>
         </header>
-        <div class="row bg-secondary bg-opacity-25 mt-5 min-vh-100">
+        <div class="shopping-cart" style="display: none;">
+            <div class="shopping-cart-header">
+            <i class="fa fa-shopping-cart cart-icon"></i><span class="cart-badge badge">{{ Cart::count(); }}</span>
+            <div class="shopping-cart-total">
+                <span class="lighter-text">Total:</span>
+                <span class="cart-total main-color-text">{{ Cart::total(); }}€</span>
+            </div>
+            </div> <!--end shopping-cart-header -->
+
+            <ul class="shopping-cart-items">
+            
+                <!--items carrito -->
+            </ul>
+
+            <a href="{{ route('carrito.show') }}" class="button">Checkout</a>
+        </div> 
+        
+
+
+
+        <div class="row bg-secondary bg-opacity-25 min-vh-100 align-items-center">
+        
             @yield('contenedor')
         </div>
         <footer class="row">
@@ -73,5 +95,6 @@
         </nav>
         </footer>
     </div>
+    
 </body>
 </html>

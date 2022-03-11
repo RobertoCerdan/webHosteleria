@@ -16,9 +16,16 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos=  Producto::paginate(10);
+        $busqueda=request('barra-buscador');
+        $productos=null;
+        if($busqueda!=null){
+            $productos=Producto::where('nombre', 'LIKE', '%'.$busqueda.'%')->paginate(20);
+        }
+        else{
+            $productos=Producto::paginate(20);
+        }
         $categorias = DB::table('productos')->select('categoria')->distinct()->get();
-        return view('producto.index',compact('productos'), ['categorias' => $categorias]);
+        return view('producto.index',compact('productos','categorias'));
     }
 
     /**
@@ -144,6 +151,6 @@ class ProductoController extends Controller
         $categoria = request('categoria');
         $productos=  Producto::where('categoria','LIKE','%'.$categoria.'%')->paginate(10);
         $categorias = DB::table('productos')->select('categoria')->distinct()->get();
-        return view('producto.index',compact('productos'), ['categorias' => $categorias]);
+        return view('producto.index',compact('productos','categorias'));
     }
 }

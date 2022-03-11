@@ -109,7 +109,7 @@
                             <div class="col-md-6">
                                 <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" placeholder="Telefono" value="{{ old('telefono') }}" required autocomplete="name" autofocus>
 
-                                @error('name')
+                                @error('telefono')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
