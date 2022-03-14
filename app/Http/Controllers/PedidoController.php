@@ -29,15 +29,15 @@ class PedidoController extends Controller
             $pedido['user_name'] = User::find($pedido['user_id'])->name;
             array_push($pedidosConNombre, $pedido);
         }
-        $pedidosTerminados = Pedido::where('estado', 'Preparado')->get();
+        $pedidosTerminados = Pedido::where('estado', 'Preparado')->orWhere('estado', 'Entregado')->get();
         $pedidosTerminadosConNombre=[];
         foreach($pedidosTerminados as $pedido){
             $pedido['user_name'] = User::find($pedido['user_id'])->name;
-            array_push($pedidosConNombre, $pedido);
+            array_push($pedidosTerminadosConNombre, $pedido);
         }
         return view('admin.index', [
             'pedidos' => $pedidosConNombre,
-            'pedidosTerminados' => $pedidosTerminadosConNombre
+            'pedidosterminados' => $pedidosTerminadosConNombre
         ]);
     }
 

@@ -39,7 +39,7 @@
     <div class="row justify-content-center">
         <h1 class="text-center mb-5">{{ $producto->nombre }}</h1>
         <div class="col-lg-6 mb-3 d-flex justify-content-center">
-            <img class="img-fluid img-thumbnail" src="{{ asset('/storage/imagenes/' . $producto->imagen) }}">
+            <img class="img-fluid img-thumbnail" style="max-height: 500px;  " src="{{ asset('/storage/imagenes/' . $producto->imagen) }}">
         </div>  
         <form  class="col-lg-5" action="{{ route('producto.update', $producto->id)}}" method="POST">
             <div class="mb-3">

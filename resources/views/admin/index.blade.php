@@ -48,6 +48,50 @@
   </tbody>
 </table>
 
+
+<h2 class="border-bottom border-secondary text-center col-12 col-sm-4 mx-auto">Pedidos Terminados</h2>
+<table class="table table-responsive mx-auto mt-5 mt-sm-0 bg-white" style="max-width: 1500px;">
+  <caption>Pedidos</caption>
+  <thead>
+    <tr class="d-flex justify-content-around">
+      <th>ID</th>
+      <th>Cliente</th>
+      <th>Fecha</th>
+      <th>Estado</th>
+      <th>Actualizar</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($pedidosterminados as $pedido)
+    <tr  class="d-flex justify-content-around">
+      <th>{{ $pedido['id'] }}</th>
+      <td>{{ $pedido['user_name'] }}</td>
+      <td>{{ $pedido['fechaReserva'] }}</td>
+      @if($pedido['estado']=='Preparado')
+      <td>
+      <select id="{{ $pedido['id'] }}" class="form-select text-success" >
+            <option value="Preparado" 
+            @if($pedido['estado']== 'Preparado')
+                selected
+            @endif
+            >Preparado</option>
+            <option value="Entregado" 
+            @if($pedido['estado']== 'Entregado')
+                selected
+            @endif
+            >Entregado</option>   
+      </select></td>
+      @else
+      <td class="text-success"> 
+        {{ $pedido['estado'] }}
+     </td>
+      @endif
+      <td><button type="button" value="{{$pedido['id']}}" class="btn btn-warning actualizarEstado ml-3">&#10003;
+</button></td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
