@@ -37,7 +37,7 @@
             @if($pedido['estado']== 'Entregado')
                 selected
             @endif
-            >En proceso</option>
+            >Entregado</option>
           
       </select></td>
       <td><button type="button" value="{{$pedido['id']}}" class="btn btn-warning actualizarEstado ml-3">&#10003;
