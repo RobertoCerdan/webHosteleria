@@ -27,6 +27,15 @@
         </a>
       </div>  
   </div>
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="row justify-content-center">
         <h1 class="text-center mb-5">{{ $producto->nombre }}</h1>
         <div class="col-lg-6 mb-3 d-flex justify-content-center">

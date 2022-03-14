@@ -37,7 +37,7 @@
     @foreach ($productos as $producto)
     <div class="col producto">
         <div class="card border-info text-center productocard">
-        <img src="{{ asset('storage/imagenes/' .$producto->imagen) }}" class="card-img-top" alt="imagen de relleno">
+        <img src="{{ asset('storage/imagenes/' .$producto->imagen) }}" class="card-img-top" style="height: 300px;" alt="imagen de relleno">
         <a class="text-dark arriba" data-bs-toggle="modal" data-bs-target="#modalBorrar{{$producto->id}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
@@ -88,9 +88,9 @@
 <div class="col-12 pt-3">
 <div class="row row-cols-1 row-cols-md-2 g-4 px-lg-5 " >
     @foreach ($productos as $producto)
-        <div class="col producto" style="max-height: 400px;">
+        <div class="col producto">
             <div class="card border-info text-center productocard">
-                <img src="{{ asset('storage/imagenes/' .$producto->imagen) }}" class="card-img-top"  alt="imagen de relleno">
+                <img src="{{ asset('storage/imagenes/' .$producto->imagen) }}" class="card-img-top" style="height: 300px;" alt="imagen de relleno">
                 <div class="card-body">
                     <h5 class="card-title">{{$producto->nombre}}</h5>
                     <p class="card-text">Precio: {{$producto->precio}} </p>

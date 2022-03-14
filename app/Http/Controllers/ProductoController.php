@@ -116,6 +116,12 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'nombre' => 'required|max:30',
+            'precio' => 'required',
+            'descripcion' => 'required',
+        ]);
+
         $producto=Producto::find($id);
 
         $nombreProducto=request('nombre');
