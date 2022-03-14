@@ -21,9 +21,8 @@ class PerfilController extends Controller
                         ->orWhere('estado', 'En proceso');
                     })
                     ->get();
-        $ultimosPedidos = Pedido::latest()->take(2)
-                    ->where('user_id', Auth::user()->id)
-                    ->Where('estado', 'Entregado')
+        $ultimosPedidos = Pedido::where('user_id', Auth::user()->id)
+                    ->where('estado', 'Entregado')
                     ->get();
 
         $usuarios = User::where('id','!=',Auth::user()->id)->orWhereNull('id')->get();
