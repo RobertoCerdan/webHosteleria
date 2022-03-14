@@ -23,7 +23,7 @@ class PerfilController extends Controller
                     ->get();
         $ultimosPedidos = Pedido::latest()->take(2)
                     ->where('user_id', Auth::user()->id)
-                    ->Where('estado', 'Recibido')
+                    ->Where('estado', 'Entregado')
                     ->get();
 
         $usuarios = User::where('id','!=',Auth::user()->id)->orWhereNull('id')->get();
