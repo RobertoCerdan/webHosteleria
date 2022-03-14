@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->enum('estado',['Recibido','En proceso','Preparado']);
+            $table->enum('estado',['Entegado','En proceso','Preparado']);
             $table->Date('fechaReserva');
             $table->timestamps();
         });

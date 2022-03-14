@@ -10,6 +10,15 @@
             </a>
         </div>  
     </div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 <form class="row justify-content-center" action="{{ route('producto.store') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">      
     @csrf         
     <h2 class="border-bottom border-secondary text-center col-md-5 col-xl-3 mb-3">Subir nuevo producto</h2>

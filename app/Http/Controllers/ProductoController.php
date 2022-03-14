@@ -46,16 +46,28 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'nombre' => 'required|unique:productos|max:30',
+            'precio' => 'required',
+            'descripcion' => 'required',
+            'imagen' => 'required',
+        ]);
+
+
         $nombreProducto=request('nombre');
         $precio=request('precio');
         $descripcion=request('descripcion');
         $categoria=request('categoria');
 
         $archivo=$request->file('imagen');
-        $nombreArchivo=$archivo->getClientOriginalName();
 
-        StorageController::save($archivo, $nombreArchivo);
 
+        $nombreArchivo="default.jpeg";
+        if($archivo != null){
+            $nombreArchivo=$archivo->getClientOriginalName();
+            StorageController::save($archivo, $nombreArchivo);
+        }
         $producto=new Producto();
         $producto->nombre=$nombreProducto;
         $producto->precio=$precio;
