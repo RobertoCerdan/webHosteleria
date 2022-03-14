@@ -94,7 +94,7 @@
             </tr>
           </thead>
           <tbody class="table-light">
-            @foreach ($ultimospedidos as $ultimospedido)
+            @foreach ($ultimospedidos as $ultimopedido)
             <tr class="text-center">
               <td>{{$ultimopedido->id}}</td>
               <td>{{$ultimopedido->estado}}</td>
