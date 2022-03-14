@@ -82,7 +82,7 @@
                 <p class="nav-link text-dark h5">ES</p>
             </div>
         </nav>
-        <main>
+        <img class="position-absolute m-auto" style="width: 100%; height: 100vh; top:0px; z-index: -1;" src="{{asset('storage/imagenes/descarga.jpg') }}" alt="">
             @yield('content')
         </main>
     </div>
