@@ -5,7 +5,8 @@
 @endsection
 
 @section('contenedor')
-<table class="table table-responsive mx-auto mt-5 mt-sm-0" style="max-width: 1500px;">
+<h2 class="border-bottom border-secondary text-center col-12 col-sm-4 mx-auto">Pedidos</h2>
+<table class="table table-responsive mx-auto mt-5 mt-sm-0 bg-white" style="max-width: 1500px;">
   <caption>Pedidos</caption>
   <thead>
     <tr class="d-flex justify-content-around">
@@ -18,7 +19,7 @@
   </thead>
   <tbody>
     @foreach($pedidos as $pedido)
-    <tr  class="d-flex justify-content-around mt-2 p-1">
+    <tr  class="d-flex justify-content-around">
       <th scope="row">{{ $pedido['id'] }}</th>
       <td>{{ $pedido['user_name'] }}</td>
       <td>{{ $pedido['fechaReserva'] }}</td>

@@ -86,11 +86,11 @@
     @endforeach
 @else
 <div class="col-12 pt-3">
-<div class="row row-cols-1 row-cols-md-2 g-4 px-lg-5 ">
+<div class="row row-cols-1 row-cols-md-2 g-4 px-lg-5 " >
     @foreach ($productos as $producto)
-        <div class="col producto">
+        <div class="col producto" style="max-height: 400px;">
             <div class="card border-info text-center productocard">
-            <img src="{{ asset('storage/imagenes/' .$producto->imagen) }}" class="card-img-top" alt="imagen de relleno">
+                <img src="{{ asset('storage/imagenes/' .$producto->imagen) }}" class="card-img-top"  alt="imagen de relleno">
                 <div class="card-body">
                     <h5 class="card-title">{{$producto->nombre}}</h5>
                     <p class="card-text">Precio: {{$producto->precio}} </p>

@@ -17,14 +17,14 @@ class ProductoFactory extends Factory
      */
     public function definition()
     {
-
+        $categorias = ["Pastas", "Ensaladas", "Arroz", "Carnes", "Pescado", "Postres"];
         return [
             'nombre' => $this->faker->name,
             'descripcion' => $this->faker->text,
-            'categoria' => $this->faker->word,
+            'categoria' => $categorias[random_int(0, count($categorias) -1 )],
             'cantidad' => $this->faker->numberBetween(0,4),
             'precio' => $this->faker->randomFloat(2, 0, 35.00),
-            'imagen' => 'default.jpeg'
+            'imagen' => 'default' .  strval(random_int(0,9)) . '.jpeg',
         ];
     }
 }
