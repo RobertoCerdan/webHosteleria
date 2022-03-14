@@ -5,6 +5,7 @@
 @endsection
 
 @section('contenedor')
+<div class="w-100 mt-4"></div>
 <h2 class="border-bottom border-secondary text-center col-12 col-sm-4 mx-auto">Pedidos</h2>
 <table class="table table-responsive mx-auto mt-5 mt-sm-0 bg-white" style="max-width: 1500px;">
   <caption>Pedidos</caption>

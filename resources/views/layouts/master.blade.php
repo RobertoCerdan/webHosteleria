@@ -10,7 +10,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/cesta.js') }}" defer></script>
     <script src="{{ asset('js/notify.js') }}" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+    <title>Web Hosteleria</title>
     @yield('head')
 </head>
 <body style="background-image: url('{{asset('storage/imagenes/fondoPagina.jpg') }}'); background-size: cover;">
@@ -91,7 +92,11 @@
         <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid">
                 <div>
-                    <a class="navbar-brand text-white py-1">Manual aplicacion</a>
+                    @if(Auth::user()->rol=='Admin')
+                        <a target="_blank" href="/storage/manuales/manual-admin.pdf" class="navbar-brand text-white py-1">Manual aplicacion admin</a>
+                    @else
+                        <a target="_blank" href="/storage/manuales/manual-usuario.pdf" class="navbar-brand text-white py-1">Manual aplicacion</a>
+                    @endif
                 </div>
                 <div>
                     <a class="navbar-brand text-white py-1">Contenido Copyrigth</a>
